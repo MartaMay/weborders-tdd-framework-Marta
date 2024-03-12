@@ -1,0 +1,93 @@
+
+-gitignore - certain files should not be committed (ignored)
+ idea folder - not relevant
+ target folder - automatically generated folder. not relevant to the project
+ *.iml - any file with extension iml
+-what to ignore? - .idea/, target/, *.iml, .DS_Store
+- to delete already committed .gitignore file/folder use command line and use command: git rm -r --cached <folder or file name>
+right click on main project -> open in terminal -> navigate to the correct folder ->  add command -> add name of the file
+- each individual test case shouldn't depend on other test cases and be able to run independently
+-use extension inheritance. create super class to re-use same code. each class must  extend super class
+- create .properties file: add url, login, password etc...
+  to read from .properties file:
+                                Properties properties = new Properties();
+                                properties.load(new BufferedReader(new FileReader("config.properties")));
+                                String url = properties.getProperty("url");
+-create a property reader file and a method that can be reused
+
+-SINGLETON:
+design pattern:
+1. create a class
+2. create  private static Object;
+3. Add private empty constructor;
+4. Add public getter method that returns initialized Object:
+
+                                public static Object getName(){
+                                        if(objectName== null){
+                                        objectName = new Object();
+                                        }
+                                        return objectName;
+                                    }
+
+   WebDriver Object can be used in Singleton.
+Create your own quit method for DRIVER in Singleton:
+1.add public quit method:
+                                public static WebDriver quitDriver(){
+                                        if(driver != null){
+                                            driver.quit();
+                                            driver = null;
+                                        }
+                                        return driver;
+
+Switching to different browser using Singleton:
+throught .properties -> change browser and initialize in Driver Class
+
+03/09/24
+
+TDD TestNG Framework components:
+Java (v. 17) -> writing framework code
+Maven (3.9.6 )-> manage framework structure, dependencies. Execute tests through command line (command line run)
+Selenium WebDriver (4.18)-> creating UI tests
+TesnNG (7.9)-> run the tests, configure and organize tests cases via an xml file and annotations
+Faker -> mock data generation
+Common IO - IO operations
+IntelliJ -> develop, run, test the framework code, fix the errors, speed up the development process
+Git/GitHup -> version control/remote repository and both for code collaboration
+Git - system we install to our computer for version control
+GitHub - servise that let you store a code in some cloud location
+.gitignore -> ignore unnecessary files to prevent merge conflicts
+TestNG xml file -> configure/organize/group our test cases
+.properties file -> stores project specific global data/variables
+utility classes (ConfigReader, Driver, SeleniumUtils) -> store commonly used methods
+Base Class -> store common setup and teardown operations for all test cases
+Singelton -> design pattern applied to Driver to ensure a single WebDriver instance during the test execution
+
+Headless browser - executes everything in the background, (you won't see it happening):
+                            ChromeOptions chromeOptions = new ChromeOptions();
+                            chromeOptions.addArguments("--headless");
+
+ Page Object:
+ 1.Page Object: web page or a section of web page; web elements
+ 2.Test Code
+ better to initialize new Object for each test
+ -create a class like "LoginPage" for each page and keep login path there in case developers will make a change to the aplication
+ -define all elements
+ -define methods like "clickButton"
+ -in test code create an object and call it's method
+
+ PAGE FACTORY: -> class to provide easier way to use page object model (POM)
+ Syntax:                 public LoginPage(){
+                         PageFactory.initElements(Driver.getDriver(), this);
+                           }
+
+03/12/24
+Page Object Model
+1. Create the POM class
+2. Add constructor:  PageFactory.initElements(Driver.getDriver(), this);
+3.Add variable and locate the element:      @FindBy (id="ctl00_MainContent_username")
+                     private  WebElement userNameField;
+4. Provide the getter
+5 In your test create the Page Object Element object
+6.
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Data Driven Test">
+
+    <test name="Data Driven Test Example">
+
+        <classes>
+            <class name="tests.PlaceOrderTests">
+                <methods>
+                    <include name="placeOrder"/>
+                </methods>
+            </class>
+        </classes>
+
+
+    </test>
+
+</suite>
